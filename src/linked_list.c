@@ -1,7 +1,7 @@
 #include <assert.h> /* assert */
 #include <stdio.h>  /* printf */
 #include <stdlib.h> /* malloc, free */
-
+#include <math.h>
 #include "linked_list.h"
 
 /* functions to create lists */
@@ -26,12 +26,32 @@ void free_list(node *p) {
 void print_list(node *p) {
   // Add your code for exercise 1
   // There is NO testcode for this
+  if (p->next!=NULL)
+    {
+    printf("%d", p->value);
+    return print_list(p->next);
+    }
+  else
+    return;
 }
-
 int sum_squares(node *p) {
   // Add your code for excercise 2
-  // You can find the tests in tests.cpp
-  return -1;
+  // You can find the tests in tests.cpp;
+  if (p == NULL)
+  return 0;
+  else if (p != NULL)
+    {
+    printf("testing %d", p->value);
+    return p->value * p->value + sum_squares(p->next);
+    }
+  /*
+  else if (p->next == NULL)
+  {
+    printf("test2");
+    printf("total sum for all squared is ");
+    return p->value* p->value;
+  }
+  */
 }
 
 typedef int (*fn_int_to_int)(int);
