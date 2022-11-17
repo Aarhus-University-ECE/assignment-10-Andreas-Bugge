@@ -82,6 +82,15 @@ struct tree_node *Remove(int x, struct tree_node *t) {
         return tmp;
     }
   }
+
+  else if (x > t->item)
+  {
+    t->right = Remove(x,t->right);
+  }
+  else if (x < t->item)
+  {
+    t->left = Remove(x,t->left);
+  }
 }
 
 int Contains(int x, struct tree_node *t) {
@@ -107,7 +116,7 @@ struct tree_node *Initialize(struct tree_node *t) {
 
 int Empty(struct tree_node *t) {
   // Test if empty
-  if (t->item == NULL)
+  if (t == NULL)
   return 1;
   else
   return 0;
